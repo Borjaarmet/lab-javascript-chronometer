@@ -14,52 +14,81 @@ let milUni = document.getElementById('milUni');
 let splits = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+
+    printMinutes()
+    printSeconds()
 }
 
 function printMinutes() {
-  // ... your code goes here
+    let minutes = chronometer.twoDigitsNumber(chronometer.getMinutes())
+    console.log(minutes)
+    minDec.innerText = minutes[0];
+    minUni.innerText = minutes[1];
 }
 
 function printSeconds() {
-  // ... your code goes here
+    let seconds = chronometer.twoDigitsNumber(chronometer.getSeconds())
+    console.log(seconds)
+    secDec.innerText = seconds[0];
+    secUni.innerText = seconds[1];
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function printSplit() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function clearSplits() {
-  // ... your code goes here
+    // ... your code goes here
 }
 
 function setStopBtn() {
-  // ... your code goes here
+    btnLeft.innerHTML = 'STOP';
+    btnLeft.classList.toggle('start');
+    btnLeft.classList.toggle('stop');
+
 }
 
 function setSplitBtn() {
-  // ... your code goes here
+    btnRight.innerHTML = 'SPLIT';
+    btnRight.classList.toggle('reset');
+    btnRight.classList.toggle('split');
 }
 
 function setStartBtn() {
-  // ... your code goes here
+    btnLeft.innerHTML = 'START';
+    btnLeft.classList.toggle('start');
+    btnLeft.classList.toggle('stop');
 }
 
 function setResetBtn() {
-  // ... your code goes here
+    btnRight.innerHTML = 'RESET';
+    btnRight.classList.toggle('reset');
+    btnRight.classList.toggle('split');
 }
 
 // Start/Stop Button
 btnLeft.addEventListener('click', () => {
-  // ... your code goes here
+    if (btnLeft.innerText === 'START') {
+        setStopBtn();
+        chronometer.startClick(printTime);
+
+    } else {
+        setStartBtn();
+        chronometer.stopClick();
+    }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', () => {
-  // ... your code goes here
+    if (btnRight.innerText === 'RESET') {
+        setSplitBtn();
+
+    } else {
+        setResetBtn();
+    }
 });

@@ -5,10 +5,13 @@ class Chronometer {
     }
 
 
-    startClick(callback) {
-        setInterval(() => {
-            this.currentTime += 1
-        }, 1000)
+    startClick(func) {
+        this.intervalId =
+            setInterval(() => {
+                this.currentTime += 1;
+
+                func()
+            }, 1000)
 
     }
 
@@ -27,12 +30,15 @@ class Chronometer {
         seconds = this.currentTime % 60;
         return Math.floor(seconds)
     }
-    twoDigitsNumber() {
-        let minutes = minutes.toString()
-        return typeof(minutes)
+    twoDigitsNumber(number) {
+        if (number < 10) {
+            return '0' + number.toString()
+        } else {
+            return number.toString()
+        }
     }
     stopClick() {
-        clearInterval(setInterval)
+        clearInterval(this.intervalId)
     }
     resetClick() {
         this.currentTime = 0;
